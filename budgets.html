@@ -63,40 +63,19 @@
 
     <header class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold" style="color: #FF7B54;">The Budget Engine</h1>
-            <p class="mt-2 text-lg text-gray-600">How capital is allocated and enforced across the lead marketplace.</p>
+            <h1 class="text-4xl font-bold" style="color: #FF7B54;">Admin2 Budgets</h1>
+            <p class="mt-2 text-lg text-gray-600">How budgets are enforced across campaigns.</p>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
 
-        <section id="architecture" class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #FF7B54;">Budget Architecture & Hierarchy</h2>
-            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The system employs a multi-level budget structure, allowing for granular control from the company level all the way down to specific geographic locations. Budgets are assigned to categories based on lead type.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="md:col-span-1">
-                    <h3 class="text-2xl font-semibold text-center mb-4">Structural Hierarchy</h3>
-                    <div class="space-y-2">
-                        <div class="hierarchy-level"><strong>1. Company Level</strong> (Overall corporate budget)</div>
-                        <div class="hierarchy-arrow">↓</div>
-                        <div class="hierarchy-level"><strong>2. Campaign Level</strong> (Specific marketing initiatives)</div>
-                        <div class="hierarchy-arrow">↓</div>
-                        <div class="hierarchy-level"><strong>3. Product Level</strong> (Budgets for Verified, Unverified, etc.)</div>
-                        <div class="hierarchy-arrow">↓</div>
-                        <div class="hierarchy-level"><strong>4. Geographic Level</strong> (Zip code-based availability)</div>
-                    </div>
-                </div>
-                <div class="md:col-span-1 chart-container">
-                    <canvas id="budgetCategoryChart"></canvas>
-                </div>
-            </div>
-        </section>
 
         <section id="reset-cycle" class="bg-white rounded-lg shadow-lg p-6 mb-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                     <h2 class="text-3xl font-bold mb-4" style="color: #FFC759;">The 30-Day Rolling Window</h2>
-                     <p class="mt-4 text-gray-700">Unlike traditional systems with hard monthly resets, this engine uses a dynamic <strong class="font-semibold">30-day rolling window</strong> for budget calculations. This means usage is always based on the most recent performance data, providing a more accurate and fair assessment. The calculation is also timezone-aware, respecting the company's local business day.</p>
+                     <p class="mt-4 text-gray-700">Admin2 uses a dynamic <strong class="font-semibold">30-day rolling window</strong> for budget calculations. This means usage is always based on the most recent performance data, providing a more accurate and fair assessment. The calculation is also timezone-aware, respecting the company's local business day.</p>
                 </div>
                 <div class="chart-container">
                      <canvas id="rollingWindowChart"></canvas>
@@ -252,10 +231,10 @@
         new Chart(ctx3, {
             type: 'bar',
             data: {
-                labels: [wrapLabel('Default Overage (107% Usage)', 16), wrapLabel('Strict Enforcement (103% Usage)', 16)],
+                labels: [wrapLabel('Default Overage (107% Usage)', 16), wrapLabel('Strict Enforcement (100% Usage)', 16)],
                 datasets: [{
                     label: 'Status',
-                    data: [107, 103],
+                    data: [115, 100],
                     backgroundColor: (context) => {
                         const usage = context.dataset.data[context.dataIndex];
                         if (context.dataIndex === 0) return usage < 115 ? '#79c7a0' : '#FF4E50';
