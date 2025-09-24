@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infographic: The Budget Engine</title>
+    <title>Infographic: Admin2 Budgets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,7 +69,6 @@
     </header>
 
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-
 
         <section id="reset-cycle" class="bg-white rounded-lg shadow-lg p-6 mb-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -234,7 +233,7 @@
                 labels: [wrapLabel('Default Overage (107% Usage)', 16), wrapLabel('Strict Enforcement (100% Usage)', 16)],
                 datasets: [{
                     label: 'Status',
-                    data: [115, 100],
+                    data: [107, 103],
                     backgroundColor: (context) => {
                         const usage = context.dataset.data[context.dataIndex];
                         if (context.dataIndex === 0) return usage < 115 ? '#79c7a0' : '#FF4E50';
