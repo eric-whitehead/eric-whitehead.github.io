@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Lifecycle of a Lead</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            min-height: 80px;
+        }
+        .flow-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2rem;
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold" style="color: #003f5c;">The Lifecycle of a Lead</h1>
+            <p class="mt-2 text-lg text-gray-600">An interactive journey from initial submission to final sale, powered by data-driven automation.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        <section id="phase1" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #2f4b7c;">Phase 1: Consumer Record Creation</h2>
+                    <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full">Timeline: T+0 seconds</span>
+                    <p class="mt-4 text-gray-700">The process ignites the moment a potential customer provides their information through a calculator or API. The system immediately captures, validates, and classifies this initial data, creating a foundational consumer record and syncing it with legacy systems.</p>
+                </div>
+                <div class="chart-container">
+                     <canvas id="initialDataChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase2" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-semibold mb-3" style="color: #665191;">Initial Product Fields</h3>
+                     <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Status:</strong> Set to `STATUS_INITIAL` (0), marking the beginning.</div></li>
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Good to Sell:</strong> Defaults to `false` pending qualification.</div></li>
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Contact Requests:</strong> Captures the user's desired number of company contacts (1-4).</div></li>
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Channel & Classification:</strong> Records the lead's origin and type.</div></li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #665191;">Phase 2: Consumer Product Creation</h2>
+                    <span class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full">Timeline: Concurrent with Phase 1</span>
+                    <p class="mt-4 text-gray-700">Simultaneously, a 'Consumer Product' is created. This internal record acts as the lead's passport, tracking its status, sales potential, and user preferences throughout its journey in the system before dispatching a job to begin the qualification process.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase3" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #a05195;">Phase 3: Qualification & Verification</h2>
+                    <span class="inline-block bg-pink-100 text-pink-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full">Timeline: T+1 to 5 minutes</span>
+                    <p class="mt-4 text-gray-700">Automated systems now scrutinize the lead. The process involves checking for duplicates, verifying eligibility, and running fraud detection via IP Quality Score. This crucial step ensures only valid, high-quality leads proceed, progressing through a series of internal statuses.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="statusProgressionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase4" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="order-2 md:order-1 flex flex-col items-center">
+                    <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #d45087;">Pre-BRS Validation Flow</h3>
+                    <div class="w-full max-w-sm">
+                        <div class="flow-step" style="background-color: #fce8f3; border-left: 4px solid #d45087;">Company Availability Check</div>
+                        <div class="flow-arrow" style="color: #d45087;">&#8595;</div>
+                        <div class="flow-step" style="background-color: #fce8f3; border-left: 4px solid #d45087;">Campaign Budget Check</div>
+                        <div class="flow-arrow" style="color: #d45087;">&#8595;</div>
+                        <div class="flow-step" style="background-color: #fce8f3; border-left: 4px solid #d45087;">Eligibility Rules Check</div>
+                    </div>
+                 </div>
+                 <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #d45087;">Phase 4: Allocation Attempt</h2>
+                    <span class="inline-block bg-red-100 text-red-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full">Timeline: T+5 to 15 minutes</span>
+                    <p class="mt-4 text-gray-700">The system now attempts to find a suitable buyer. This process is time-zone aware, pausing allocation until a potential buyer's business hours. Before the main revenue algorithm runs, a series of pre-validation checks ensures that potential buyers are available, have budget, and are eligible to receive the lead.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase5" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2" style="color: #f95d6a;">Phase 5: Best Revenue Scenario (BRS) Processing</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto">The heart of the system, this phase uses a sophisticated algorithm to determine the most profitable way to sell the lead. It's a multi-step process designed to maximize revenue while honoring all business rules.</p>
+             <span class="block text-center mt-2 bg-orange-100 text-orange-800 text-sm font-semibold mx-auto w-fit px-2.5 py-0.5 rounded-full">Timeline: T+15 to 30 minutes</span>
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div>
+                     <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #f95d6a;">BRS Algorithm Breakdown</h3>
+                    <ol class="relative border-l border-gray-300 ml-4">
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">1</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Get Potential Campaigns</h4>
+                            <p class="text-sm text-gray-600">Queries for all potential buyers using complex filters like geography, industry, and performance thresholds.</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">2</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Calculate & Rectify Prices</h4>
+                            <p class="text-sm text-gray-600">Determines price based on a bid hierarchy and adjusts it based on the buyer's historical rejection rate.</p>
+                        </li>
+                         <li class="mb-10 ml-6">
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">3</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Apply Budget Filters</h4>
+                            <p class="text-sm text-gray-600">Excludes campaigns that have exceeded their daily or monthly budget limits.</p>
+                        </li>
+                         <li class="ml-6">
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">4</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Select Best Scenario</h4>
+                            <p class="text-sm text-gray-600">Sorts remaining campaigns by priority and tests different sale types (Exclusive, Duo, etc.) to find the highest revenue combination.</p>
+                        </li>
+                    </ol>
+                </div>
+                <div class="chart-container">
+                    <canvas id="brsPrioritiesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+         <section id="phase6" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #ff7c43;">Phase 6: Product Assignment Creation</h2>
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full">Timeline: T+30 to 45 minutes</span>
+                    <p class="mt-4 text-gray-700">Once the BRS algorithm selects the winners, the system creates `ProductAssignment` records. This officially assigns the lead to the buyers, sets the final cost, and marks the lead as delivered. This action triggers billing, logging, and rejection tracking for each buyer.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-3" style="color: #ff7c43;">Product Assignment Record</h3>
+                     <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><strong>Company ID:</strong> <span class="font-mono text-gray-600">Selected Company</span></li>
+                        <li class="flex justify-between"><strong>Cost:</strong> <span class="font-mono text-gray-600">BRS Calculated Price</span></li>
+                        <li class="flex justify-between"><strong>Sale Type:</strong> <span class="font-mono text-gray-600">Exclusive/Duo/Trio/Quad</span></li>
+                        <li class="flex justify-between"><strong>Delivered At:</strong> <span class="font-mono text-gray-600">Current Timestamp</span></li>
+                        <li class="flex justify-between"><strong>Rejection Window:</strong> <span class="font-mono text-gray-600">24-48 hours</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="phase7" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1 flex justify-around">
+                     <div class="text-center">
+                        <div class="text-5xl mb-2">&#128231;</div>
+                        <p class="font-semibold">Company<br>Notifications</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl mb-2">&#128100;</div>
+                        <p class="font-semibold">Consumer<br>Confirmations</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl mb-2">&#128187;</div>
+                        <p class="font-semibold">Legacy CRM<br>Sync</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #ffa600;">Phase 7: Final Delivery & Notifications</h2>
+                    <span class="inline-block bg-amber-100 text-amber-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full">Timeline: T+45 to 60 minutes</span>
+                    <p class="mt-4 text-gray-700">In the final phase, the system dispatches a wave of events and communications. Buyers receive lead details via email/SMS, the original consumer gets a confirmation, and all data is synced back to the legacy CRM, ensuring all parties are informed and the lifecycle is complete.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary" class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-3xl font-bold text-center mb-4" style="color: #003f5c;">Complete Process Timeline Summary</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">This chart visualizes the cumulative time elapsed through the lead lifecycle. While the initial steps are nearly instantaneous, the process involves built-in delays for business hour checks and complex calculations, with the entire automated journey completing in under an hour.</p>
+            <div class="chart-container" style="max-width: 900px; height: 400px; max-height: 450px;">
+                <canvas id="timelineSummaryChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white mt-12">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; Lead Lifecycle Visualization. All data is representative.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+
+            words.forEach(word => {
+                const testLine = currentLine.length > 0 ? `${currentLine} ${word}` : word;
+                if (testLine.length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const brilliantBluesPalette = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600'];
+
+        const ctx1 = document.getElementById('initialDataChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Contact Info', 'Address Details', 'Industry Specifics', 'User Preferences'],
+                datasets: [{
+                    label: 'Initial Data Capture',
+                    data: [40, 25, 20, 15],
+                    backgroundColor: brilliantBluesPalette,
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Composition of Initial Data Capture',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('statusProgressionChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['INITIAL', 'PENDING REVIEW', 'UNDER REVIEW', 'PENDING ALLOCATION', ['ALLOCATED /', 'UNSOLD']],
+                datasets: [{
+                    label: 'Status Flow',
+                    data: [1, 2, 3, 4, 5],
+                    backgroundColor: '#a05195',
+                    borderColor: '#a05195',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                     x: {
+                        display: false,
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Lead Status Progression Flow',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('brsPrioritiesChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'radar',
+            data: {
+                labels: [wrapLabel('Higher Price (Revenue)', 16), wrapLabel('Lower Budget Usage', 16), wrapLabel('Lower Rejection %', 16), 'Random Tie-Breaker'],
+                datasets: [{
+                    label: 'Selection Weight',
+                    data: [10, 8, 7, 2],
+                    backgroundColor: 'rgba(249, 93, 106, 0.2)',
+                    borderColor: '#f95d6a',
+                    pointBackgroundColor: '#f95d6a',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#f95d6a'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 scales: {
+                    r: {
+                        angleLines: { display: false },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        ticks: {
+                           display: false
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'BRS Campaign Sorting Priorities',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        const ctx4 = document.getElementById('timelineSummaryChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'line',
+            data: {
+                labels: ['Creation', 'Processing', 'Qualification', 'Allocation', 'BRS', 'Assignment', 'Notifications'],
+                datasets: [{
+                    label: 'Cumulative Time (Minutes)',
+                    data: [0, 0.5, 5, 15, 30, 45, 60],
+                    fill: true,
+                    backgroundColor: 'rgba(0, 63, 92, 0.1)',
+                    borderColor: '#003f5c',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                 responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Minutes Elapsed'
+                        }
+                    }
+                },
+                plugins: {
+                     title: {
+                        display: true,
+                        text: 'Cumulative Timeline of Lead Lifecycle',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
