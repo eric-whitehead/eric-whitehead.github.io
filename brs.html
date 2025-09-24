@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: BRS - The Science of Revenue Optimization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfaf6;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .flow-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-left-width: 4px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .flow-card:hover {
+            transform: translateY(-5px);
+        }
+        .formula-box {
+            background-color: #fff9eb;
+            border: 1px solid #f9d423;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 1rem;
+            text-align: center;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold" style="color: #FF4E50;">BRS: The Science of Revenue Optimization</h1>
+            <p class="mt-2 text-lg text-gray-600">A deep dive into the algorithm that determines the most profitable way to sell leads.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        <section id="core-flow" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #FF4E50;">Core Algorithm Flow</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="flow-card" style="border-color: #FF4E50;">
+                    <div class="text-4xl mb-3">🔎</div>
+                    <h3 class="text-xl font-semibold">1. Campaign Discovery</h3>
+                    <p class="text-gray-600 mt-2">Identifies all potentially eligible campaigns through a multi-layered filtering process.</p>
+                </div>
+                <div class="flow-card" style="border-color: #FC913A;">
+                    <div class="text-4xl mb-3">💲</div>
+                    <h3 class="text-xl font-semibold">2. Price Calculation</h3>
+                    <p class="text-gray-600 mt-2">Calculates the precise price for each campaign using a strict hierarchy and performance data.</p>
+                </div>
+                <div class="flow-card" style="border-color: #F9D423;">
+                    <div class="text-4xl mb-3">📊</div>
+                    <h3 class="text-xl font-semibold">3. Budget Filtering</h3>
+                    <p class="text-gray-600 mt-2">Removes campaigns that have exhausted their designated daily or monthly budgets.</p>
+                </div>
+                 <div class="flow-card" style="border-color: #79c7a0;">
+                    <div class="text-4xl mb-3">🏆</div>
+                    <h3 class="text-xl font-semibold">4. Scenario Selection</h3>
+                    <p class="text-gray-600 mt-2">Simulates various sale types and selects the combination that yields the highest total revenue.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="discovery" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #FF4E50;">Step 1: Campaign Discovery</h2>
+                    <p class="mt-4 text-gray-700">The process begins by casting a wide net and then applying a series of strict filters to narrow down the pool of potential buyers to only the most relevant and eligible campaigns. This ensures that leads are only considered for partners who meet specific geographic, industry, and performance criteria.</p>
+                    <ul class="mt-4 space-y-2">
+                       <li class="flex items-center"><span class="font-bold text-lg mr-2" style="color:#FF4E50;">&#10003;</span> Geographic Matching</li>
+                       <li class="flex items-center"><span class="font-bold text-lg mr-2" style="color:#FF4E50;">&#10003;</span> Industry & Company Eligibility</li>
+                       <li class="flex items-center"><span class="font-bold text-lg mr-2" style="color:#FF4E50;">&#10003;</span> Utility Filters (Solar-specific)</li>
+                       <li class="flex items-center"><span class="font-bold text-lg mr-2" style="color:#FF4E50;">&#10003;</span> Rejection % Thresholds</li>
+                    </ul>
+                </div>
+                <div class="chart-container">
+                     <canvas id="filteringFunnelChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="order-2 md:order-1">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #FC913A;">Step 2: Price Calculation</h2>
+                    <p class="mt-4 text-gray-700">Once a campaign is deemed eligible, the system calculates its price. A strict hierarchy is followed to find the base price. Then, a 'rectification' formula is applied, reducing the final price based on the campaign's historical rejection rate, thereby penalizing poor performance and rewarding reliability.</p>
+                    <h4 class="font-semibold mt-4 mb-2">Price Rectification Formula:</h4>
+                    <div class="formula-box" style="color: #FC913A;">Final Price = Base Price * (1 - (Rejection % / 100))</div>
+                </div>
+                <div class="order-1 md:order-2 chart-container">
+                    <canvas id="priceRectificationChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="budgeting" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #F9D423;">Step 3: Budget Filtering</h2>
+                    <p class="mt-4 text-gray-700">A campaign can be eligible and have a price, but it can't be sold to if it's out of money. This step acts as a crucial financial check, removing any campaigns that have exceeded their spending limits. It respects daily caps, usage percentage thresholds, and hard "never exceed" settings to ensure fiscal responsibility.</p>
+                    <ul class="mt-4 space-y-2">
+                       <li class="flex items-center"><span class="font-bold text-lg mr-2" style="color:#F9D423;">&#10003;</span> Daily & Monthly Budget Amounts</li>
+                       <li class="flex items-center"><span class="font-bold text-lg mr-2" style="color:#F9D423;">&#10003;</span> Budget Usage Percentage</li>
+                       <li class="flex items-center"><span class="font-bold text-lg mr-2" style="color:#F9D423;">&#10003;</span> "Never Exceed Budget" Settings</li>
+                    </ul>
+                </div>
+                <div class="chart-container">
+                    <canvas id="budgetCategoryChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selection" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2" style="color: #79c7a0;">Step 4: Scenario Selection</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto">This is the final and most critical stage. The remaining campaigns are sorted by priority. The system then simulates selling the lead under different 'Sale Types' (e.g., exclusively to one buyer, to two buyers, etc.), calculates the total revenue for each scenario, and picks the one that makes the most money.</p>
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                 <div class="chart-container">
+                    <canvas id="selectionPrioritiesChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="scenarioRevenueChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="bg-white mt-12 border-t">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; BRS Algorithm Visualization. All data is representative.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                const testLine = currentLine.length > 0 ? `${currentLine} ${word}` : word;
+                if (testLine.length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const energeticPalette = ['#FF4E50', '#FC913A', '#F9D423', '#79c7a0'];
+
+        const ctx1 = document.getElementById('filteringFunnelChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Total Campaigns', 'Geo Filter', 'Industry Filter', 'Perf. Filter'],
+                datasets: [{
+                    label: 'Remaining Campaigns',
+                    data: [1000, 520, 250, 150],
+                    backgroundColor: energeticPalette,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Campaign Filtering Funnel',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('priceRectificationChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabel('Campaign A (0% Reject)', 16), wrapLabel('Campaign B (10% Reject)', 16), wrapLabel('Campaign C (25% Reject)', 16)],
+                datasets: [{
+                    label: 'Base Price',
+                    data: [50, 50, 50],
+                    backgroundColor: '#cccccc',
+                },{
+                    label: 'Final Price',
+                    data: [50, 45, 37.5],
+                    backgroundColor: '#FC913A',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Price ($)'}
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Impact of Rejection Rate on Price',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('budgetCategoryChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'doughnut',
+            data: {
+                labels: ['Verified', 'Unverified', 'Email-Only'],
+                datasets: [{
+                    label: 'Budget Allocation',
+                    data: [65, 25, 10],
+                    backgroundColor: ['#F9D423', '#fbe278', '#fcf0b7'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: {
+                        display: true,
+                        text: 'Budget Categories by Type',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        const ctx4 = document.getElementById('selectionPrioritiesChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'radar',
+            data: {
+                labels: ['Higher Price', wrapLabel('Lower Budget Usage', 16), wrapLabel('Lower Rejection %', 16)],
+                datasets: [{
+                    label: 'Sorting Weight',
+                    data: [10, 8, 7],
+                    backgroundColor: 'rgba(121, 199, 160, 0.2)',
+                    borderColor: '#79c7a0',
+                    pointBackgroundColor: '#79c7a0',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { display: false },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        ticks: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Campaign Sorting Priorities',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        const ctx5 = document.getElementById('scenarioRevenueChart').getContext('2d');
+        new Chart(ctx5, {
+            type: 'bar',
+            data: {
+                labels: ['Exclusive', 'Duo', 'Trio', 'Quad'],
+                datasets: [{
+                    label: 'Total Scenario Revenue',
+                    data: [50, 85, 110, 125],
+                    backgroundColor: '#79c7a0',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Total Revenue ($)'}
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Revenue by Sale Type Scenario',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
