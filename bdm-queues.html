@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: BDM Prospecting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .queue-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-top-width: 4px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .comparison-table th {
+            background-color: #f1f3f5;
+            font-weight: 600;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold" style="color: #0077b6;">The BDM Queues</h1>
+            <p class="mt-2 text-lg text-gray-600">A look into the two queues system that powers company outreach.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        <section id="dual-queues" class="mb-16">
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The system separates companies into two distinct queues, each with its own purpose, criteria, and prioritization logic to maximize BDM efficiency.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="queue-card" style="border-color: #0096c7;">
+                    <h3 class="text-2xl font-semibold text-center">Existing Companies Queue</h3>
+                    <p class="text-center text-gray-600 mt-2"><strong>Goal:</strong> Re-engage past buyers.</p>
+                    <p class="mt-4">This queue targets companies that have previously purchased leads but have been inactive for at least 120 days. The focus is on relationship management and identifying new opportunities with known partners. Assignments are permanent unless auto-released after 5 days of inactivity.</p>
+                </div>
+                 <div class="queue-card" style="border-color: #48cae4;">
+                    <h3 class="text-2xl font-semibold text-center">Prospecting Queue</h3>
+                    <p class="text-center text-gray-600 mt-2"><strong>Goal:</strong> Qualify new, unverified businesses.</p>
+                    <p class="mt-4">This queue is filled with new, unverified companies from external sources like SalesIntel or direct registrations. The primary goal is qualification, decision-maker identification, and conversion to a full company record. Assignments are temporary, auto-releasing after 7 days.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="existing-queue-logic" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #0096c7;">Existing Companies: Priority Logic</h2>
+                     <p class="mt-4 text-gray-700">To enter this queue, a company must be in good standing, have no assigned managers, and have not purchased leads in the last 120 days. Once qualified, companies are sorted by a multi-factor algorithm designed to surface the highest-quality prospects first.</p>
+                </div>
+                <div class="chart-container">
+                     <canvas id="existingQueuePriorityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="prospecting-queue-logic" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="order-2 md:order-1">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #48cae4;">Prospecting Queue: Priority Logic</h2>
+                    <p class="mt-4 text-gray-700">The prospecting queue prioritizes leads based on their source and data quality. Direct registrations are fast-tracked, followed by human-verified and targeted prospects. The ultimate ranking factor is the "Recent Lead Count," a metric indicating market activity and business health.</p>
+                </div>
+                <div class="order-1 md:order-2 chart-container">
+                    <canvas id="prospectingQueuePriorityChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="comparison" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #0077b6;">Queue Comparison: Head-to-Head</h2>
+            <div class="overflow-x-auto">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th style="color: #0096c7;">Existing Companies Queue</th>
+                            <th style="color: #48cae4;">Prospecting Queue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Target Companies</strong></td>
+                            <td>Companies that previously bought leads</td>
+                            <td>New / unverified companies</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lead History Filter</strong></td>
+                            <td>Must NOT have bought leads in 120 days</td>
+                            <td>No lead history required</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assignment Duration</strong></td>
+                            <td>Permanent (until inactive)</td>
+                            <td>Temporary (7 days)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Auto-Release</strong></td>
+                            <td>After 5 days of BDM inactivity</td>
+                            <td>After 7 days, regardless of activity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Priority Factors</strong></td>
+                            <td>Top 500 Status, Google Reviews, Recency</td>
+                            <td>Source, Verification Status, Lead Potential</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Industry Filter</strong></td>
+                            <td>Limited whitelist (roofing, windows, etc.)</td>
+                            <td>All industries via NAICS codes</td>
+                        </tr>
+                         <tr>
+                            <td><strong>Data Source</strong></td>
+                            <td>Internal company database</td>
+                            <td>External APIs (e.g., SalesIntel), Registrations</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-12 border-t">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; BDM Prospecting Engine Visualization. All data is representative.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                const testLine = currentLine.length > 0 ? `${currentLine} ${word}` : word;
+                if (testLine.length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const trustworthyPalette = ['#0077b6', '#0096c7', '#48cae4', '#90e0ef', '#ade8f4'];
+
+        const ctx1 = document.getElementById('existingQueuePriorityChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['1. Top 500 Company', wrapLabel('2. Most Recent Lead Purchase', 16), '3. Google Review Count', '4. New Buyer Prospect'],
+                datasets: [{
+                    label: 'Priority Weight',
+                    data: [10, 8, 6, 5],
+                    backgroundColor: trustworthyPalette[1],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { display: false }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Existing Companies Sorting Priority',
+                        font: { size: 16 },
+                        color: '#343a40'
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('prospectingQueuePriorityChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Registrations', wrapLabel('Human Verified Prospects', 16), 'Targeted Prospects', wrapLabel('High Recent Lead Count', 16)],
+                datasets: [{
+                    label: 'Priority',
+                    data: [1000, 500, 250, 100],
+                    backgroundColor: trustworthyPalette[2],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Prospecting Queue Funnel',
+                        font: { size: 16 },
+                        color: '#343a40'
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
