@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Rejection Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .impact-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-top-width: 4px;
+            text-align: center;
+        }
+        .formula-box {
+            background-color: #eefbf8;
+            border: 1px solid #21e6c1;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 1rem;
+            text-align: center;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold" style="color: #1f4287;">The Rejection Engine</h1>
+            <p class="mt-2 text-lg text-gray-600">How performance data shapes lead pricing and availability.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        <section id="dual-impact" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4" style="color: #1f4287;">The Dual Impact System</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">A company's rejection history doesn't just have one effect; it has two distinct and powerful impacts on its ability to buy leads. This system ensures that performance is a key factor in both eligibility and pricing.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="impact-card" style="border-color: #278ea5;">
+                    <div class="text-4xl mb-3">⛔</div>
+                    <h3 class="text-2xl font-semibold">1. Campaign Eligibility</h3>
+                    <p class="text-gray-600 mt-2">The system uses the <strong class="font-semibold">CRM Rejection Percentage</strong> as a gatekeeper. If a company's rate of system delivery failures exceeds a set threshold (e.g., 10%), their campaigns are entirely excluded from the BRS algorithm, making them ineligible to purchase leads.</p>
+                </div>
+                 <div class="impact-card" style="border-color: #21e6c1;">
+                    <div class="text-4xl mb-3">📉</div>
+                    <h3 class="text-2xl font-semibold">2. Price Adjustment</h3>
+                    <p class="text-gray-600 mt-2">For campaigns that are eligible, the <strong class="font-semibold">Overall Rejection Percentage</strong> (Manual + CRM) directly impacts the price they pay. Higher rejection rates lead to lower bid prices, reducing the value of their bids and protecting inventory for better-performing partners.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculation" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #1f4287;">The Calculation Engine</h2>
+                     <p class="mt-4 text-gray-700">Rejection rates are not based on lead count, but on the <strong class="font-semibold">dollar value</strong> of leads rejected over a <strong class="font-semibold">rolling 30-day window</strong>. This cost-based approach gives more weight to higher-value leads. The calculation combines manual rejections with CRM delivery failures to create an overall performance score.</p>
+                    <div class="mt-4 bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <h4 class="font-semibold text-lg" style="color: #1f4287;">New Company Protection</h4>
+                        <p class="text-sm text-gray-700">To prevent unfair penalties, CRM rejections are not counted against a company until they have been assigned at least <strong class="font-semibold">$5,000</strong> in leads since their last CRM reset.</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                     <canvas id="rejectionCompositionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="price-impact" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="order-2 md:order-1">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #278ea5;">Price Impact in Action</h2>
+                    <p class="mt-4 text-gray-700">The primary price rectification formula directly penalizes campaigns with high overall rejection rates. The chart illustrates how a lead with a $100 base price changes for companies with different performance histories.</p>
+                    <h4 class="font-semibold mt-4 mb-2">Price Rectification Formula:</h4>
+                    <div class="formula-box" style="color: #278ea5;">Final Price = Base Price * (1 - (Overall Rejection % / 100))</div>
+                </div>
+                <div class="order-1 md:order-2 chart-container">
+                    <canvas id="priceImpactExampleChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="brs-integration" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2" style="color: #21e6c1;">BRS Integration & Business Impact</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The calculated rejection statistics are a cornerstone of the BRS algorithm, influencing both which campaigns can participate and how they rank. This creates a powerful incentive system that rewards quality and protects revenue.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="chart-container">
+                    <canvas id="brsSortingPriorityChart"></canvas>
+                </div>
+                <div>
+                     <h3 class="text-2xl font-semibold mb-4" style="color: #21e6c1;">Key Business Impacts</h3>
+                     <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🛡️</span>
+                            <div><strong class="font-semibold">Revenue Protection:</strong> Ensures high-rejection companies pay less, reducing wasted inventory on partners who are unlikely to convert.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-2xl mr-3">🚀</span>
+                            <div><strong class="font-semibold">Performance Optimization:</strong> Motivates partners to improve their lead acceptance processes and fix CRM delivery issues.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-2xl mr-3">🤝</span>
+                            <div><strong class="font-semibold">Marketplace Fairness:</strong> The cost-based calculation and new company protection create a fair system where reliable partners are rewarded.</div>
+                        </li>
+                     </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-12 border-t">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; Rejection Engine Visualization. All data is representative.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                const testLine = currentLine.length > 0 ? `${currentLine} ${word}` : word;
+                if (testLine.length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const professionalPalette = ['#1f4287', '#278ea5', '#21e6c1', '#a6f6f1'];
+
+        const ctx1 = document.getElementById('rejectionCompositionChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Manual Rejection %', 'CRM Rejection %'],
+                datasets: [{
+                    label: 'Overall Rejection % Composition',
+                    data: [15, 5],
+                    backgroundColor: [professionalPalette[1], professionalPalette[0]],
+                    borderColor: '#ffffff',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: {
+                        display: true,
+                        text: 'Example: Overall Rejection Rate (20%)',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('priceImpactExampleChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabel('Good Co. (0% Reject)', 16), wrapLabel('Avg Co. (10% Reject)', 16), wrapLabel('Poor Co. (20% Reject)', 16)],
+                datasets: [{
+                    label: 'Final Lead Price',
+                    data: [100, 90, 80],
+                    backgroundColor: professionalPalette[1],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Price Paid for a $100 Lead' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Price Impact of Overall Rejection Rate',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        const ctx3 = document.getElementById('brsSortingPriorityChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['1. Higher Price', '2. Lower Budget Usage', '3. Lower Rejection %'],
+                datasets: [{
+                    label: 'Sorting Priority',
+                    data: [10, 8, 7],
+                    backgroundColor: [professionalPalette[0], professionalPalette[1], professionalPalette[2]],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                 scales: {
+                    x: { display: false }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'BRS Campaign Sorting Priorities',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
