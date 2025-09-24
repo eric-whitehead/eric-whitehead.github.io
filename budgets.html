@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infographic: The Budget Engine</title>
+    <title>Infographic: Admin2 Budgets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,34 +63,14 @@
 
     <header class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold" style="color: #FF7B54;">The Budget Engine</h1>
-            <p class="mt-2 text-lg text-gray-600">How capital is allocated and enforced across the lead marketplace.</p>
+            <h1 class="text-4xl font-bold" style="color: #FF7B54;">Admin2 Budgets</h1>
+            <p class="mt-2 text-lg text-gray-600">How budgets enforced across campaigns.</p>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
 
-        <section id="architecture" class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-8" style="color: #FF7B54;">Budget Architecture & Hierarchy</h2>
-            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The system employs a multi-level budget structure, allowing for granular control from the company level all the way down to specific geographic locations. Budgets are assigned to categories based on lead type.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="md:col-span-1">
-                    <h3 class="text-2xl font-semibold text-center mb-4">Structural Hierarchy</h3>
-                    <div class="space-y-2">
-                        <div class="hierarchy-level"><strong>1. Company Level</strong> (Overall corporate budget)</div>
-                        <div class="hierarchy-arrow">↓</div>
-                        <div class="hierarchy-level"><strong>2. Campaign Level</strong> (Specific marketing initiatives)</div>
-                        <div class="hierarchy-arrow">↓</div>
-                        <div class="hierarchy-level"><strong>3. Product Level</strong> (Budgets for Verified, Unverified, etc.)</div>
-                        <div class="hierarchy-arrow">↓</div>
-                        <div class="hierarchy-level"><strong>4. Geographic Level</strong> (Zip code-based availability)</div>
-                    </div>
-                </div>
-                <div class="md:col-span-1 chart-container">
-                    <canvas id="budgetCategoryChart"></canvas>
-                </div>
-            </div>
-        </section>
+    
 
         <section id="reset-cycle" class="bg-white rounded-lg shadow-lg p-6 mb-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -180,34 +160,7 @@
         
         const zestyPalette = ['#FFC759', '#FF7B54', '#FFD29D', '#4D4D4D'];
 
-        const ctx1 = document.getElementById('budgetCategoryChart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'doughnut',
-            data: {
-                labels: ['Verified Leads', 'Unverified Leads', 'Email-Only Leads'],
-                datasets: [{
-                    label: 'Budget Allocation by Category',
-                    data: [300, 150, 75],
-                    backgroundColor: [zestyPalette[1], zestyPalette[0], zestyPalette[2]],
-                    borderColor: '#ffffff',
-                    borderWidth: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom' },
-                    title: {
-                        display: true,
-                        text: 'Example: Daily Budget Categories ($)',
-                        font: { size: 16 },
-                        color: zestyPalette[3]
-                    },
-                    tooltip: { callbacks: { title: tooltipTitleCallback } }
-                }
-            }
-        });
+        
 
         const ctx2 = document.getElementById('rollingWindowChart').getContext('2d');
         new Chart(ctx2, {
@@ -252,10 +205,10 @@
         new Chart(ctx3, {
             type: 'bar',
             data: {
-                labels: [wrapLabel('Default Overage (107% Usage)', 16), wrapLabel('Strict Enforcement (103% Usage)', 16)],
+                labels: [wrapLabel('Default Overage (107% Usage)', 16), wrapLabel('Strict Enforcement (100% Usage)', 16)],
                 datasets: [{
                     label: 'Status',
-                    data: [107, 103],
+                    data: [107, 100],
                     backgroundColor: (context) => {
                         const usage = context.dataset.data[context.dataIndex];
                         if (context.dataIndex === 0) return usage < 115 ? '#79c7a0' : '#FF4E50';
