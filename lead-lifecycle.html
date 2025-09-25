@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Lifecycle of a Lead</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            min-height: 80px;
+        }
+        .flow-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2rem;
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 relative">
+            <a href="index.html" class="absolute top-6 right-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                Home
+            </a>
+            <h1 class="text-4xl font-bold" style="color: #003f5c;">The Lifecycle of a Lead</h1>
+            <p class="mt-2 text-lg text-gray-600">The journey from initial calculator submission to final sale.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        <section id="phase1" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #2f4b7c;">Phase 1: Consumer Record Creation</h2>
+                    <p class="mt-4 text-gray-700">The process ignites the moment a potential customer provides their information through one of our calculators. The system immediately captures, validates, and classifies this initial data, creating a consumer record.</p>
+                </div>
+                <div class="chart-container">
+                     <canvas id="initialDataChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="lead-data-example" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #2f4b7c;">Example Lead Data Collection</h2>
+                <p class="text-lg text-gray-600">This table shows the comprehensive data we collect about each lead during the consumer record creation process.</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Field</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Example Value</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Consumer ID</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 font-semibold">System</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">5605956</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Unique identifier for tracking</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Email</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-purple-600 font-semibold">Contact Info</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">Louisespinozajr@gmail.com</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Primary communication channel</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Phone</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-purple-600 font-semibold">Contact Info</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">(307) 321-3369</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Secondary communication channel</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Name</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-purple-600 font-semibold">Contact Info</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">Louis Espinoza</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Personal identification</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Address</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">Location</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">1156 Mountain View Blvd</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Service location</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">City, State, ZIP</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">Location</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">Rawlins, WY 82301</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Geographic targeting</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Coordinates</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">Location</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">41.796, -107.251</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Precise location mapping</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Status</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-orange-600 font-semibold">Processing</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">0 (Initial)</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Lead lifecycle stage</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Classification</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-orange-600 font-semibold">Processing</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">3</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Lead type categorization</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Max Contact Requests</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 font-semibold">User Preference</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">4</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">User's desired company contacts</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Service Type</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-yellow-600 font-semibold">Industry Specific</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">Roof Type: Shingle</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Project specifications</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Source URL</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-600 font-semibold">Attribution</td>
+                            <td class="px-6 py-4 text-sm text-gray-500 font-mono">roofingcalculator.com</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Lead origin tracking</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Project Estimate</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-yellow-600 font-semibold">Industry Specific</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">$9,220 - $25,355</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Budget qualification</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">IP Quality Score</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-pink-600 font-semibold">Verification</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">Valid, Active Line</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Fraud prevention</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Created At</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 font-semibold">System</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">2025-09-01 00:01:11</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Timestamp for processing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="text-center p-3 bg-blue-50 rounded-lg">
+                    <div class="w-4 h-4 bg-blue-600 rounded mx-auto mb-2"></div>
+                    <p class="text-xs font-medium text-blue-800">System</p>
+                </div>
+                <div class="text-center p-3 bg-purple-50 rounded-lg">
+                    <div class="w-4 h-4 bg-purple-600 rounded mx-auto mb-2"></div>
+                    <p class="text-xs font-medium text-purple-800">Contact Info</p>
+                </div>
+                <div class="text-center p-3 bg-green-50 rounded-lg">
+                    <div class="w-4 h-4 bg-green-600 rounded mx-auto mb-2"></div>
+                    <p class="text-xs font-medium text-green-800">Location</p>
+                </div>
+                <div class="text-center p-3 bg-orange-50 rounded-lg">
+                    <div class="w-4 h-4 bg-orange-600 rounded mx-auto mb-2"></div>
+                    <p class="text-xs font-medium text-orange-800">Processing</p>
+                </div>
+                <div class="text-center p-3 bg-red-50 rounded-lg">
+                    <div class="w-4 h-4 bg-red-600 rounded mx-auto mb-2"></div>
+                    <p class="text-xs font-medium text-red-800">User Preference</p>
+                </div>
+                <div class="text-center p-3 bg-yellow-50 rounded-lg">
+                    <div class="w-4 h-4 bg-yellow-600 rounded mx-auto mb-2"></div>
+                    <p class="text-xs font-medium text-yellow-800">Industry Specific</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="lead-sources" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #2f4b7c;">Lead Sources Overview</h2>
+                <p class="text-lg text-gray-600">Lead data from September 2025 - Understanding where our leads originate is crucial for optimizing the lifecycle process.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-lg text-blue-700">Roofing Calculator</h4>
+                            <p class="text-2xl font-bold text-gray-800">34,233</p>
+                            <p class="text-sm text-blue-600 font-medium">Conversion: 5.6%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-purple-500">
+                            <h4 class="font-semibold text-lg text-purple-700">SolarEstimate</h4>
+                            <p class="text-2xl font-bold text-gray-800">20,109</p>
+                            <p class="text-sm text-purple-600 font-medium">Conversion: 4.1%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-pink-500">
+                            <h4 class="font-semibold text-lg text-pink-700">MySolar</h4>
+                            <p class="text-2xl font-bold text-gray-800">8,457</p>
+                            <p class="text-sm text-pink-600 font-medium">Conversion: 5.9%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-red-500">
+                            <h4 class="font-semibold text-lg text-red-700">Fixr</h4>
+                            <p class="text-2xl font-bold text-gray-800">7,312</p>
+                            <p class="text-sm text-red-600 font-medium">Conversion: 6.1%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-orange-500">
+                            <h4 class="font-semibold text-lg text-orange-700">SolarReviews</h4>
+                            <p class="text-2xl font-bold text-gray-800">3,953</p>
+                            <p class="text-sm text-orange-600 font-medium">Conversion: 5.2%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-yellow-500">
+                            <h4 class="font-semibold text-lg text-yellow-700">Bathroom Estimate</h4>
+                            <p class="text-2xl font-bold text-gray-800">1,503</p>
+                            <p class="text-sm text-yellow-600 font-medium">Conversion: 4.8%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-green-500">
+                            <h4 class="font-semibold text-lg text-green-700">Kitchen Estimate</h4>
+                            <p class="text-2xl font-bold text-gray-800">144</p>
+                            <p class="text-sm text-green-600 font-medium">Conversion: 3.5%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="leadSourcesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase2" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-semibold mb-3" style="color: #665191;">Initial Product Fields</h3>
+                     <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Status:</strong> Set to `INITIAL`, marking the beginning.</div></li>
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Good to Sell:</strong> Defaults to `false` pending qualification.</div></li>
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Contact Requests:</strong> Captures the user's desired number of company contacts (1-4).</div></li>
+                        <li class="flex items-start"><span class="text-xl mr-3" style="color: #665191;">&#9679;</span><div><strong class="font-semibold">Channel & Classification:</strong> Records the lead's origin and type.</div></li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #665191;">Phase 2: Consumer Product Creation</h2>
+                    <p class="mt-4 text-gray-700">Simultaneously, a 'Consumer Product' is created. This internal record acts as the lead's passport, tracking its status, sales potential, and user preferences throughout its journey in the system before dispatching a job to begin the qualification process.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase3" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #a05195;">Phase 3: Qualification & Verification</h2>
+                    <p class="mt-4 text-gray-700">Automated systems now scrutinize the lead. The process involves checking for duplicates, verifying eligibility, and running additional verification via IP Quality Score. This crucial step ensures only valid, high-quality leads proceed, progressing through a series of internal statuses.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="statusProgressionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase4" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="order-2 md:order-1 flex flex-col items-center">
+                    <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #d45087;">Pre-BRS Validation Flow</h3>
+                    <div class="w-full max-w-sm">
+                        <div class="flow-step" style="background-color: #fce8f3; border-left: 4px solid #d45087;">Company Availability Check</div>
+                        <div class="flow-arrow" style="color: #d45087;">&#8595;</div>
+                        <div class="flow-step" style="background-color: #fce8f3; border-left: 4px solid #d45087;">Campaign Budget Check</div>
+                        <div class="flow-arrow" style="color: #d45087;">&#8595;</div>
+                        <div class="flow-step" style="background-color: #fce8f3; border-left: 4px solid #d45087;">Eligibility Rules Check (Timezone, recency)</div>
+                    </div>
+                 </div>
+                 <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #d45087;">Phase 4: Allocation Attempt</h2>
+                    <p class="mt-4 text-gray-700">The system now attempts to find a suitable buyer. This process is time-zone aware, pausing allocation until a potential buyer's business hours. Before the main best revenue algorithm runs, a series of pre-validation checks ensures that potential buyers are available, have budget, and are eligible to receive the lead.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="phase5" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-3xl font-bold text-center mb-2" style="color: #f95d6a;">Phase 5: Best Revenue Scenario (BRS) Processing</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto">The heart of the system, this phase uses a sophisticated algorithm to determine the most profitable way to sell the lead. It's a multi-step process designed to maximize revenue while honoring all business rules.</p>
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div>
+                     <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #f95d6a;">BRS Algorithm Breakdown</h3>
+                    <ol class="relative border-l border-gray-300 ml-4">
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">1</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Get Potential Campaigns</h4>
+                            <p class="text-sm text-gray-600">Queries for all potential buyers using complex filters like geography, industry, and performance thresholds.</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">2</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Calculate & Rectify Prices</h4>
+                            <p class="text-sm text-gray-600">Determines price based on a bid hierarchy and adjusts it based on the buyer's historical rejection rate.</p>
+                        </li>
+                         <li class="mb-10 ml-6">
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">3</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Apply Budget Filters</h4>
+                            <p class="text-sm text-gray-600">Excludes campaigns that have exceeded their daily or monthly budget limits.</p>
+                        </li>
+                         <li class="ml-6">
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">4</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Select Best Scenario</h4>
+                            <p class="text-sm text-gray-600">Sorts remaining campaigns by priority and tests different sale types (Exclusive, Duo, etc.) to find the highest revenue combination.</p>
+                        </li>
+                    </ol>
+                </div>
+                <div class="chart-container">
+                    <canvas id="brsPrioritiesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+         <section id="phase6" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #ff7c43;">Phase 6: Product Assignment Creation</h2>
+                    <p class="mt-4 text-gray-700">Once the BRS algorithm selects the winners, the system creates `ProductAssignment` records. This officially assigns the lead to the buyers, sets the final cost, and marks the lead as delivered. This action triggers billing, logging, and rejection tracking for each buyer.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-3" style="color: #ff7c43;">Product Assignment Record</h3>
+                     <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between"><strong>Company ID:</strong> <span class="font-mono text-gray-600">Selected Company</span></li>
+                        <li class="flex justify-between"><strong>Cost:</strong> <span class="font-mono text-gray-600">BRS Calculated Price</span></li>
+                        <li class="flex justify-between"><strong>Sale Type:</strong> <span class="font-mono text-gray-600">Exclusive/Duo/Trio/Quad</span></li>
+                        <li class="flex justify-between"><strong>Delivered At:</strong> <span class="font-mono text-gray-600">Current Timestamp</span></li>
+                        <li class="flex justify-between"><strong>Rejection Window:</strong> <span class="font-mono text-gray-600">24-48 hours</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="phase7" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1 flex justify-around">
+                     <div class="text-center">
+                        <div class="text-5xl mb-2">&#128231;</div>
+                        <p class="font-semibold">Company<br>Notifications</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl mb-2">&#128100;</div>
+                        <p class="font-semibold">Consumer<br>Confirmations</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl mb-2">&#128187;</div>
+                        <p class="font-semibold">Legacy CRM<br>Sync</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #ffa600;">Phase 7: Final Delivery & Notifications</h2>
+                    <p class="mt-4 text-gray-700">In the final phase, the system dispatches a wave of events and communications. Buyers receive lead details via email/SMS/CRM, and all data is synced back to the legacy.</p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="bg-white mt-12">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; Lead Lifecycle Visualization</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+
+            words.forEach(word => {
+                const testLine = currentLine.length > 0 ? `${currentLine} ${word}` : word;
+                if (testLine.length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const brilliantBluesPalette = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600'];
+
+        const ctx1 = document.getElementById('initialDataChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Contact Info', 'Address Details', 'Industry Specifics', 'User Preferences'],
+                datasets: [{
+                    label: 'Initial Data Capture',
+                    data: [40, 25, 20, 15],
+                    backgroundColor: brilliantBluesPalette,
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Composition of Initial Data Capture',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('statusProgressionChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['INITIAL', 'PENDING REVIEW', 'UNDER REVIEW', 'PENDING ALLOCATION', ['ALLOCATED /', 'UNSOLD']],
+                datasets: [{
+                    label: 'Status Flow',
+                    data: [1, 2, 3, 4, 5],
+                    backgroundColor: '#a05195',
+                    borderColor: '#a05195',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                     x: {
+                        display: false,
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Lead Status Progression Flow',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('brsPrioritiesChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'radar',
+            data: {
+                labels: [wrapLabel('Higher Price (Revenue)', 16), wrapLabel('Lower Budget Usage', 16), wrapLabel('Lower Rejection %', 16), 'Random Tie-Breaker'],
+                datasets: [{
+                    label: 'Selection Weight',
+                    data: [10, 8, 7, 2],
+                    backgroundColor: 'rgba(249, 93, 106, 0.2)',
+                    borderColor: '#f95d6a',
+                    pointBackgroundColor: '#f95d6a',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#f95d6a'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 scales: {
+                    r: {
+                        angleLines: { display: false },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        ticks: {
+                           display: false
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'BRS Campaign Sorting Priorities',
+                        font: { size: 16 }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx4 = document.getElementById('leadSourcesChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'pie',
+            data: {
+                labels: ['Roofing Calculator', 'SolarEstimate', 'MySolar', 'Fixr', 'SolarReviews', 'Bathroom Estimate', 'Kitchen Estimate', 'Solar Quotes'],
+                datasets: [{
+                    label: 'Lead Volume',
+                    data: [34233, 20109, 8457, 7312, 3953, 1503, 144, 1],
+                    backgroundColor: [
+                        '#3b82f6',
+                        '#8b5cf6', 
+                        '#ec4899',
+                        '#ef4444',
+                        '#f97316',
+                        '#eab308',
+                        '#22c55e',
+                        '#6366f1'
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Lead Sources Distribution',
+                        font: { size: 16 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((context.parsed / total) * 100).toFixed(1);
+                                return `${context.label}: ${context.parsed.toLocaleString()} leads (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

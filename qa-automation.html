@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The QA Automation Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .step-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-left-width: 4px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            background-color: #2a9d8f;
+            color: white;
+            border-radius: 9999px;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        .benefit-card {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 relative">
+            <a href="index.html" class="absolute top-6 right-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                Home
+            </a>
+            <h1 class="text-4xl font-bold" style="color: #2a9d8f;">The QA Automation Engine</h1>
+            <p class="mt-2 text-lg text-gray-600">A deep dive into the automated system that ensures lead quality and accelerates processing.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        <section id="overview" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4" style="color: #2a9d8f;">System Overview</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">This system automatically validates consumer leads every minute using a multi-layered approach. It processes leads that are 5 to 120 minutes old, working in small batches to ensure efficiency and prevent system overload. The goal is to move qualified leads from 'Initial' to 'Pending Allocation' without human intervention.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="benefit-card">
+                    <div class="text-5xl mb-3">🚀</div>
+                    <h3 class="text-xl font-semibold">Operational Efficiency</h3>
+                    <p class="text-gray-600 mt-2">Reduces manual QA workload by up to 80% and applies consistent quality standards 24/7.</p>
+                </div>
+                 <div class="benefit-card">
+                    <div class="text-5xl mb-3">🛡️</div>
+                    <h3 class="text-xl font-semibold">Quality Assurance</h3>
+                    <p class="text-gray-600 mt-2">Uses regex, phone verification, and ML classification for robust, multi-layer validation.</p>
+                </div>
+                 <div class="benefit-card">
+                    <div class="text-5xl mb-3">📈</div>
+                    <h3 class="text-xl font-semibold">Scalability</h3>
+                    <p class="text-gray-600 mt-2">Queue-based processing and configurable batch sizes allow the system to handle volume spikes with ease.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflow" class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #2a9d8f;">The Automated Processing Workflow</h2>
+            <div class="space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="step-card" style="border-color: #2a9d8f;">
+                        <div class="step-number">1</div>
+                        <h3 class="text-2xl font-semibold mb-2">Industry & Basic Checks</h3>
+                        <p>The process begins by verifying that QA automation is enabled for the lead's industry and that all baseline consumer data (name, email, etc.) is present and valid.</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-6xl">➡️</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="text-center order-2 md:order-1">
+                        <p class="text-6xl">➡️</p>
+                    </div>
+                    <div class="step-card order-1 md:order-2" style="border-color: #e9c46a;">
+                        <div class="step-number" style="background-color: #e9c46a;">2</div>
+                        <h3 class="text-2xl font-semibold mb-2">Phone Classification & Regex</h3>
+                        <p>The lead is routed based on its phone status (verified vs. unverified). Then, a comprehensive set of regex rules are applied to filter out profanity, test data, and invalid formats in names and emails.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="step-card" style="border-color: #f4a261;">
+                        <div class="step-number" style="background-color: #f4a261;">3</div>
+                        <h3 class="text-2xl font-semibold mb-2">Industry-Specific Processing</h3>
+                        <p>For specialized industries like Solar, the system employs machine learning models to classify leads based on criteria like shade coverage and home type, using confidence thresholds to ensure accuracy.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="solarConfidenceChart"></canvas>
+                    </div>
+                </div>
+                
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="text-center order-2 md:order-1">
+                        <p class="text-6xl">✅ / ❌</p>
+                    </div>
+                    <div class="step-card order-1 md:order-2" style="border-color: #e76f51;">
+                        <div class="step-number" style="background-color: #e76f51;">4</div>
+                        <h3 class="text-2xl font-semibold mb-2">Approval or Review</h3>
+                        <p>If a lead passes all checks, it's auto-approved, marked as "Good to Sell," and its status is changed to 'pending_allocation'. If it fails any step, it's automatically moved to 'pending_review' for manual QA.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="rules" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #2a9d8f;">Validation Rules Example: Name Field</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The system uses a series of regex patterns to validate data. Here's an example of the logic applied to a consumer's first or last name.</p>
+            <div class="chart-container mx-auto">
+                <canvas id="nameValidationChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-12 border-t">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; QA Automation Engine Visualization. All data is representative.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                const testLine = currentLine.length > 0 ? `${currentLine} ${word}` : word;
+                if (testLine.length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const earthyPalette = ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51'];
+
+        const ctx1 = document.getElementById('solarConfidenceChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Overall Classifier', 'Shade Classifier', 'Solar Classifier', 'Mobile Home Classifier'],
+                datasets: [{
+                    label: 'Required Confidence %',
+                    data: [90, 85, 80, 75],
+                    backgroundColor: earthyPalette[1],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Confidence Threshold' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Solar ML Model Confidence Thresholds',
+                        font: { size: 16 },
+                        color: '#333'
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('nameValidationChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabel('Contains "test"', 16), wrapLabel('Contains numbers', 16), 'Is too short (<3 chars)', 'Is Profane', 'Is a Valid Name'],
+                datasets: [{
+                    label: 'Result',
+                    data: [-1, -1, -1, -1, 1],
+                    backgroundColor: (context) => context.raw > 0 ? earthyPalette[0] : earthyPalette[3],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        display: false,
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Green = Pass, Red = Fail',
+                        font: { size: 16 },
+                        color: '#333'
+                    },
+                    tooltip: { 
+                         callbacks: { 
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                return context.raw > 0 ? 'Action: ACCEPT' : 'Action: REJECT';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
