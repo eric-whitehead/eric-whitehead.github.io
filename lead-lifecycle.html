@@ -146,8 +146,8 @@
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Classification</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-orange-600 font-semibold">Processing</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">3</td>
-                            <td class="px-6 py-4 text-sm text-gray-500">Lead type categorization</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">3 (VERIFIED_PHONE_VIA_SMS)</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Lead verification level</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Max Contact Requests</td>
@@ -215,6 +215,85 @@
                     <p class="text-xs font-medium text-yellow-800">Industry Specific</p>
                 </div>
             </div>
+        </section>
+
+        <section id="lead-classifications" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #2f4b7c;">Lead Classification System</h2>
+                <p class="text-lg text-gray-600">Understanding how leads are categorized based on their verification level and contact method availability.<br/> IPQualityScore has a "live ping" to detect an active line.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="bg-red-50 rounded-lg p-4 border-l-4 border-red-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-red-700">0 - EMAIL_ONLY</h4>
+                            <span class="text-xs font-mono bg-red-100 px-2 py-1 rounded">Basic</span>
+                        </div>
+                        <p class="text-sm text-red-600">Lead has only provided email address. No phone verification attempted.</p>
+                    </div>
+                    
+                    <div class="bg-orange-50 rounded-lg p-4 border-l-4 border-orange-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-orange-700">1 - VERIFIED_EMAIL_ONLY</h4>
+                            <span class="text-xs font-mono bg-orange-100 px-2 py-1 rounded">Email Verified</span>
+                        </div>
+                        <p class="text-sm text-orange-600">Email address has been verified as deliverable. No phone number provided.</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 rounded-lg p-4 border-l-4 border-yellow-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-yellow-700">2 - UNVERIFIED_PHONE</h4>
+                            <span class="text-xs font-mono bg-yellow-100 px-2 py-1 rounded">Phone Unverified</span>
+                        </div>
+                        <p class="text-sm text-yellow-600">Phone number provided but not yet verified through any method.</p>
+                    </div>
+                    
+                    <div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-green-700">3 - VERIFIED_PHONE_VIA_SMS</h4>
+                            <span class="text-xs font-mono bg-green-100 px-2 py-1 rounded">SMS Verified</span>
+                        </div>
+                        <p class="text-sm text-green-600">Phone number verified through SMS confirmation process.</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-blue-700">4 - VERIFIED_PHONE_VIA_CALL</h4>
+                            <span class="text-xs font-mono bg-blue-100 px-2 py-1 rounded">Call Verified</span>
+                        </div>
+                        <p class="text-sm text-blue-600">Phone number verified through direct phone call confirmation.</p>
+                    </div>
+                    
+                    <div class="bg-indigo-50 rounded-lg p-4 border-l-4 border-indigo-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-indigo-700">5 - VERIFIED_PHONE_VIA_LEAD_PROCESSING</h4>
+                            <span class="text-xs font-mono bg-indigo-100 px-2 py-1 rounded">System Verified</span>
+                        </div>
+                        <p class="text-sm text-indigo-600">Phone verified automatically during lead processing workflow.</p>
+                    </div>
+                    
+                    <div class="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-purple-700">6 - VERIFIED_PHONE_VIA_REVALIDATION_SMS</h4>
+                            <span class="text-xs font-mono bg-purple-100 px-2 py-1 rounded">Re-verified SMS</span>
+                        </div>
+                        <p class="text-sm text-purple-600">Phone re-verified through SMS after initial verification expired.</p>
+                    </div>
+                    
+                    <div class="bg-pink-50 rounded-lg p-4 border-l-4 border-pink-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-semibold text-lg text-pink-700">7 - VERIFIED_VIA_REVALIDATION_EMAIL</h4>
+                            <span class="text-xs font-mono bg-pink-100 px-2 py-1 rounded">Re-verified Email</span>
+                        </div>
+                        <p class="text-sm text-pink-600">Email re-verified after initial verification expired or became invalid.</p>
+                    </div>
+                </div>
+            </div>
+            
+            
         </section>
 
         <section id="lead-sources" class="bg-white rounded-lg shadow-lg p-6 mb-12">
