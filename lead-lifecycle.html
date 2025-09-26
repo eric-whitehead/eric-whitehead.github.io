@@ -398,31 +398,70 @@
         </section>
 
         <section id="phase5" class="bg-white rounded-lg shadow-lg p-6 mb-12">
-            <h2 class="text-3xl font-bold text-center mb-2" style="color: #f95d6a;">Phase 5: Best Revenue Scenario (BRS) Processing</h2>
-            <p class="text-center text-gray-600 max-w-3xl mx-auto">The heart of the system, this phase uses a sophisticated algorithm to determine the most profitable way to sell the lead. It's a multi-step process designed to maximize revenue while honoring all business rules.</p>
+            <h2 class="text-3xl font-bold text-center mb-2" style="color: #f95d6a;">Phase 5: Best Revenue Scenario (BRS) Funnel</h2>
+            <p class="text-center text-gray-600 max-w-4xl mx-auto mb-6">The heart of the system - a sophisticated filtering funnel that starts with hundreds of potential campaigns and systematically narrows them down to the final winners who will receive the lead. Each step eliminates unsuitable buyers until only the most profitable combination remains.</p>
+            
+            <!-- Funnel Visualization -->
+            <div class="flex justify-center mb-8">
+                <div class="relative">
+                    <!-- Wide funnel top -->
+                    <div class="bg-gradient-to-b from-red-100 to-red-200 border-2 border-red-300 rounded-t-lg px-12 py-4 text-center">
+                        <div class="text-2xl font-bold text-red-700">500+</div>
+                        <div class="text-sm text-red-600 font-medium">Potential Campaigns</div>
+                    </div>
+                    <!-- Funnel arrow -->
+                    <div class="w-0 h-0 border-l-[60px] border-r-[60px] border-t-[20px] border-l-transparent border-r-transparent border-t-orange-200 mx-auto"></div>
+                    
+                    <!-- Second level -->
+                    <div class="bg-gradient-to-b from-orange-100 to-orange-200 border-2 border-orange-300 px-10 py-3 text-center">
+                        <div class="text-xl font-bold text-orange-700">200+</div>
+                        <div class="text-sm text-orange-600 font-medium">Geography + Industry Match</div>
+                    </div>
+                    <!-- Funnel arrow -->
+                    <div class="w-0 h-0 border-l-[50px] border-r-[50px] border-t-[20px] border-l-transparent border-r-transparent border-t-yellow-200 mx-auto"></div>
+                    
+                    <!-- Third level -->
+                    <div class="bg-gradient-to-b from-yellow-100 to-yellow-200 border-2 border-yellow-300 px-8 py-3 text-center">
+                        <div class="text-xl font-bold text-yellow-700">50+</div>
+                        <div class="text-sm text-yellow-600 font-medium">Budget Available</div>
+                    </div>
+                    <!-- Funnel arrow -->
+                    <div class="w-0 h-0 border-l-[40px] border-r-[40px] border-t-[20px] border-l-transparent border-r-transparent border-t-green-200 mx-auto"></div>
+                    
+                    <!-- Final level -->
+                    <div class="bg-gradient-to-b from-green-100 to-green-200 border-2 border-green-300 rounded-b-lg px-6 py-4 text-center">
+                        <div class="text-2xl font-bold text-green-700">1-4</div>
+                        <div class="text-sm text-green-600 font-medium">Final Winners</div>
+                    </div>
+                </div>
+            </div>
             <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div>
-                     <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #f95d6a;">BRS Algorithm Breakdown</h3>
+                     <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #f95d6a;">BRS Funnel Filtering Process</h3>
                     <ol class="relative border-l border-gray-300 ml-4">
                         <li class="mb-10 ml-6">
-                            <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">1</span>
-                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Get Potential Campaigns</h4>
-                            <p class="text-sm text-gray-600">Queries for all potential buyers using complex filters like geography, industry, and performance thresholds.</p>
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-red-200 rounded-full -left-4 ring-4 ring-white">1</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Cast the Widest Net</h4>
+                            <p class="text-sm text-gray-600"><strong>Input:</strong> 500+ potential campaigns</p>
+                            <p class="text-sm text-gray-600">Queries all active campaigns using basic filters like geography, industry, and performance thresholds. This creates the largest possible pool of potential buyers.</p>
                         </li>
                         <li class="mb-10 ml-6">
                              <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">2</span>
-                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Calculate & Rectify Prices</h4>
-                            <p class="text-sm text-gray-600">Determines price based on a bid hierarchy and adjusts it based on the buyer's historical rejection rate.</p>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Calculate & Adjust Pricing</h4>
+                            <p class="text-sm text-gray-600"><strong>Remaining:</strong> ~200 campaigns</p>
+                            <p class="text-sm text-gray-600">For each surviving campaign, determines price based on bid hierarchy and adjusts it using the buyer's historical rejection rate to predict actual revenue.</p>
                         </li>
                          <li class="mb-10 ml-6">
-                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">3</span>
-                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Apply Budget Filters</h4>
-                            <p class="text-sm text-gray-600">Excludes campaigns that have exceeded their daily or monthly budget limits.</p>
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-yellow-200 rounded-full -left-4 ring-4 ring-white">3</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Budget Reality Check</h4>
+                            <p class="text-sm text-gray-600"><strong>Remaining:</strong> ~50 campaigns</p>
+                            <p class="text-sm text-gray-600">Aggressively filters out campaigns that have exceeded daily/monthly budgets or don't have sufficient funds remaining. This is where most campaigns are eliminated.</p>
                         </li>
                          <li class="ml-6">
-                             <span class="absolute flex items-center justify-center w-8 h-8 bg-orange-200 rounded-full -left-4 ring-4 ring-white">4</span>
-                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Select Best Scenario</h4>
-                            <p class="text-sm text-gray-600">Sorts remaining campaigns by priority and tests different sale types (Exclusive, Duo, etc.) to find the highest revenue combination.</p>
+                             <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -left-4 ring-4 ring-white">4</span>
+                            <h4 class="font-semibold text-lg" style="color: #f95d6a;">Final Revenue Optimization</h4>
+                            <p class="text-sm text-gray-600"><strong>Winners:</strong> 1-4 campaigns</p>
+                            <p class="text-sm text-gray-600">Sorts remaining campaigns by revenue potential and tests different sale types (Exclusive, Duo, Trio, Quad) to find the absolute highest revenue combination.</p>
                         </li>
                     </ol>
                 </div>
