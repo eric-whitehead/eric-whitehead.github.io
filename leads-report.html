@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Leads Report Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .filter-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-top-width: 4px;
+            text-align: center;
+        }
+        .code-snippet {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold" style="color: #4A5568;">The Leads Report Engine</h1>
+            <p class="mt-2 text-lg text-gray-600">An analytics platform with 76+ columns and a powerful, modular filtering system.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+        <section id="filter-architecture" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4" style="color: #2D3748;">Modular Filter Architecture</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The report's power comes from its modular design. Each of the 8 filter categories is a self-contained module that plugs into the main query, allowing for complex, multi-faceted data analysis. All filters are combined with AND logic, while selections within a single filter use OR logic.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="filter-card" style="border-color: #718096;">
+                    <h3 class="text-xl font-semibold">📍 Location</h3>
+                    <p class="text-sm text-gray-600 mt-2">Hierarchical State -> County filtering.</p>
+                </div>
+                <div class="filter-card" style="border-color: #718096;">
+                    <h3 class="text-xl font-semibold">🏭 Industry</h3>
+                    <p class="text-sm text-gray-600 mt-2">Solar, Roofing, HVAC, etc.</p>
+                </div>
+                <div class="filter-card" style="border-color: #718096;">
+                    <h3 class="text-xl font-semibold">🚦 Campaign Status</h3>
+                    <p class="text-sm text-gray-600 mt-2">Active, Paused, Inactive, etc.</p>
+                </div>
+                 <div class="filter-card" style="border-color: #718096;">
+                    <h3 class="text-xl font-semibold">📢 Advertiser</h3>
+                    <p class="text-sm text-gray-600 mt-2">Google, Meta, Microsoft, etc.</p>
+                </div>
+                <div class="filter-card" style="border-color: #A0AEC0;">
+                    <h3 class="text-xl font-semibold">🌐 Origin</h3>
+                    <p class="text-sm text-gray-600 mt-2">Direct, Referral, Campaign, etc.</p>
+                </div>
+                <div class="filter-card" style="border-color: #A0AEC0;">
+                    <h3 class="text-xl font-semibold">💻 Platform</h3>
+                    <p class="text-sm text-gray-600 mt-2">Organic, Paid, etc.</p>
+                </div>
+                <div class="filter-card" style="border-color: #A0AEC0;">
+                    <h3 class="text-xl font-semibold">🏷️ Lead Type</h3>
+                    <p class="text-sm text-gray-600 mt-2">Verified, Unverified, Email-Only.</p>
+                </div>
+                 <div class="filter-card" style="border-color: #A0AEC0;">
+                    <h3 class="text-xl font-semibold">👥 User Relation</h3>
+                    <p class="text-sm text-gray-600 mt-2">Account Manager, Sales Rep.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="location-filter" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4" style="color: #2D3748;">Advanced Feature: Cascading Filters</h2>
+                     <p class="mt-4 text-gray-700">The Location filter is a prime example of the system's advanced capabilities. It uses a hierarchical, cascading structure where the available County options dynamically update based on the selected State(s). This is achieved via a dedicated API endpoint that fetches relevant child options, ensuring users only see valid choices.</p>
+                </div>
+                <div class="chart-container">
+                     <canvas id="cascadingFilterChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="query-building" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+             <h2 class="text-3xl font-bold text-center mb-4" style="color: #4A5568;">Behind the Scenes: Query Building</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The system uses specialized builders to construct different parts of the final report query. Filters are applied to each builder, which are then combined to generate the complete dataset. This separation of concerns allows for optimized performance and easier maintenance.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-2 text-center">Leads Query Builder</h3>
+                    <p class="text-gray-700">Gathers core lead data from consumer and product tables.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2 text-center">Cost Query Builder</h3>
+                    <p class="text-gray-700">Aggregates advertising costs from daily ad cost tables.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2 text-center">Campaign Query Builder</h3>
+                    <p class="text-gray-700">Collects campaign and company relationship data.</p>
+                </div>
+            </div>
+             <div class="mt-8">
+                <h3 class="text-xl font-semibold mb-2 text-center">Example: Combined Filter Query</h3>
+                <div class="code-snippet">
+                    $builder->whereln('l.state_abbr', ['CA', 'TX'])
+    ->whereln('l.county', ['Los Angeles', 'Harris'])
+    ->whereln('i.name', ['Solar', 'Roofing']);
+                </div>
+             </div>
+        </section>
+        
+        <section id="state-management" class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #2D3748;">State Management & User Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-semibold mb-4">Making Reports Usable</h3>
+                     <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🔗</span>
+                            <div><strong class="font-semibold">URL Serialization:</strong> All selected filters, columns, and date ranges are encoded into the URL, making any report fully bookmarkable and shareable.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-2xl mr-3">💾</span>
+                            <div><strong class="font-semibold">User Presets:</strong> Users can save their complex filter and column configurations as named presets for one-click access in the future.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-2xl mr-3">⚡</span>
+                            <div><strong class="font-semibold">Performance:</strong> The frontend uses lazy loading for filter options, debounced search, and clear loading indicators to ensure a smooth user experience, even with large datasets.</div>
+                        </li>
+                     </ul>
+                </div>
+                 <div class="order-1 md:order-2 chart-container">
+                    <canvas id="uxFeaturesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-12 border-t">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; Leads Report Engine Visualization. All data is representative.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                const testLine = currentLine.length > 0 ? `${currentLine} ${word}` : word;
+                if (testLine.length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const corporatePalette = ['#4A5568', '#718096', '#A0AEC0', '#CBD5E0'];
+
+        const ctx1 = document.getElementById('cascadingFilterChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['1. User Selects "CA", "TX"', '2. API request with State IDs', '3. API returns relevant Counties', '4. County dropdown is populated'],
+                datasets: [{
+                    label: 'Step',
+                    data: [1, 2, 3, 4],
+                    backgroundColor: corporatePalette[1],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { display: false }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Dynamic County Filter Population Flow',
+                        font: { size: 16 },
+                        color: '#333'
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('uxFeaturesChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['URL Serialization', 'User Presets', 'Performance Optimizations'],
+                datasets: [{
+                    label: 'UX Features',
+                    data: [33, 33, 34],
+                    backgroundColor: [corporatePalette[0], corporatePalette[1], corporatePalette[2]],
+                    borderColor: '#ffffff',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: {
+                        display: true,
+                        text: 'Key User Experience Pillars',
+                        font: { size: 16 },
+                        color: '#333'
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
